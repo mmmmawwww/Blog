@@ -1,3 +1,5 @@
 # Blog
-[logo]: scr1.jpg 
-<img src="scr1.jpg " width="200" height="50"/>
+<img src="scr1.jp"/>
+<img src="scr2.jp"/>
+<img src="scr3.jp"/>
+<img src="scr4.jp"/>
