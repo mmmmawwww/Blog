@@ -1,0 +1,67 @@
+﻿@using Project_1._1.Models
+@model Article
+
+@{
+    ViewBag.Title = "Удаление статьи";
+}
+
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<h3>Вы уверены что хотите удалить данную статью?</h3>
+
+<ul class="nav nav-pills" id="navadminpanel">
+    <li>@Html.ActionLink("Вернуться назад", "AdminPanel")</li>
+</ul>
+
+<div class="panel-group jumbotron" id="accordion">
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label">Краткое описание</label>
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.ShortDescription)
+        </dd>
+        <dt>
+            <label class="control-label">Статья </label>
+        </dt>
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+        <dt>
+            <label class="control-label">Категория </label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            <label class="control-label">Дата </label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt><label class="control-label">Теги</label></dt>
+        <dd>
+            <ul>
+                @foreach (Tag c in Model.Tags)
+                {
+                    <li>@c.Name</li>
+                }
+            </ul>
+        </dd>
+</dl>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Удалить" class="btn btn-default" /> 
+
+        </div>
+    }
+</div>

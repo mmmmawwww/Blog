@@ -1,0 +1,26 @@
+﻿@using Project_1._1.Models
+@model Article
+@{
+    ViewBag.Title = @Html.DisplayFor(model => model.Name);
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+<ul class="nav nav-pills" id="navadminpanel">
+    <li>@Html.ActionLink("Вернуться назад", "Index")</li>
+</ul>
+
+<div class="panel-group jumbotron">
+    @Html.Raw(Model.Description)
+    <div class="container ">
+        <div class="row">
+            <div class="col-xs-3"><label>Категория:</label>@Html.DisplayFor(model => model.Category.Name)</div>
+            <div class="col-xs-3"><label>Дата публикации:</label>@Html.DisplayFor(model => model.Date)</div>
+            <div class="col-xs-3"><label>Теги:</label>
+                @foreach (Tag c in Model.Tags)
+                {
+                         <label>#</label>@c.Name
+                }
+            </div>
+        </div>
+    </div>
+</div>

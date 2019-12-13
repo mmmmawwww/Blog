@@ -1,0 +1,38 @@
+﻿@model PagedList.IPagedList<Project_1._1.Models.Tag>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Теги";
+}
+
+    <h2>Теги</h2>
+<ul class="nav nav-pills" id="navadminpanel">
+    <li><a href="AddTag">Добавить новую категорию</a></li>
+    <li><a href="AdminPanel">Вернуться назад</a></li>
+</ul>
+<div class="panel-group jumbotron" id="accordion">
+    <table class="table  table-striped">
+        <tr>
+            <th>
+                @Html.DisplayName("Название")
+            </th>
+            <th>@Html.DisplayName("Действия")</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:50%">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="width:50%">
+                    @Html.ActionLink("Редактировать", "EditTag", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteTag", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    <div class="text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Tags", new { page }))
+    </div>
